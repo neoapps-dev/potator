@@ -1,6 +1,6 @@
 name: potator
 description: "A simple Flutter client for the potatoes reverse-fetch proxy"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/neoapps-dev/potator
 
 environment:
