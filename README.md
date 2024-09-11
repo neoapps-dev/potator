@@ -19,10 +19,11 @@ made in pure Dart and Flutter
 3. **Use it**:
 
     ```dart
-    Potator.use('YOUR_POTATO_SERVER_URL'); // optional, changes the Potato server
-    final String google = await Potator.get('google.potato/');
+    Potator potator = Potator('YOUR_POTATO_SERVER_URL'); // if you don't want to change the server, don't include the `'YOUR_POTATO_SERVER_URL'` thing
+    potator.use('YOUR_POTATO_SERVER_URL'); // optional, changes the Potato server
+    final String google = await potator.get('google.potato/');
     // the slash is optional, and can be used to get a specific file, for example:
-    final String hosts = await Potator.get('hosts.potato/HOSTS.txt');
+    final String hosts = await potator.get('hosts.potato/HOSTS.txt');
     // will return the official HOSTS :)
     ```
 

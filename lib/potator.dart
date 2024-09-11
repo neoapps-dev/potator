@@ -5,11 +5,21 @@ library potator;
 import 'package:http/http.dart' as http;
 
 class Potator {
-  String serverUrl =
-      'https://potatoes-backend.vercel.app'; // MUSTN'T END WITH A SLASH
+  String serverUrl;
+
+  Potator([String url = 'https://potatoes-backend.vercel.app'])
+      : serverUrl = url.endsWith('/') ? url.substring(0, url.length - 1) : url {
+    if (url.endsWith('/')) {
+      print('POTATOR: URL should not end with a slash, it was corrected.');
+    }
+  }
 
   void use(String url) {
-    serverUrl = url;
+    if (url.endsWith('/')) {
+      print('POTATOR: URL must not end with a slash');
+    } else {
+      serverUrl = url;
+    }
   }
 
   Future<String> get(String url) async {
@@ -19,8 +29,8 @@ class Potator {
       return response.body;
     } else {
       print(
-          'POTAOR: GET request to $url failed with status ${response.statusCode}');
-      return response.body;
+          'POTATOR: GET request to $url failed with status ${response.statusCode}');
+      return 'Error: ${response.statusCode}';
     }
   }
 }
